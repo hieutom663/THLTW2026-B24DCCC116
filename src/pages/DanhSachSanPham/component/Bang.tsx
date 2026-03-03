@@ -84,7 +84,7 @@ const Bang = () => {
 				Thêm sản phẩm
 			</Button>
 			<Drawer title='Thêm sản phẩm' closable={true} onClose={onClose} visible={open} size='large'>
-				<FormSanPham />
+				<FormSanPham danhSachSanPham={dsSanPham} setDanhSachSanPham={setDSSanPham} />
 			</Drawer>
 			<Table dataSource={sanPhamCanTim} columns={column} size='middle' bordered />
 		</>

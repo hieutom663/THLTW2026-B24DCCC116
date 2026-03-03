@@ -1,17 +1,33 @@
-import React from 'react';
 import { Form, Input, InputNumber, Button } from 'antd';
+import { useState } from 'react';
+import type { sanPham } from './Data';
 
-const FormSanPham: React.FC = () => {
+const FormSanPham = (props: { danhSachSanPham: sanPham[]; setDanhSachSanPham: any }) => {
+	const { danhSachSanPham, setDanhSachSanPham } = props;
 	const [form] = Form.useForm();
-
+	const [thongTinNguoiDungNhap, setThongTinNguoiDungNhap] = useState<sanPham>({
+		id: 0,
+		name: '',
+		price: 0,
+		quantity: 0,
+	});
 	const onFinish = (values: any) => {
 		console.log('Form values:', values);
+	};
+
+	const submit = () => {
+		setDanhSachSanPham([...danhSachSanPham, { ...thongTinNguoiDungNhap, id: danhSachSanPham.length + 1 }]);
 	};
 
 	return (
 		<Form form={form} layout='vertical' onFinish={onFinish}>
 			<Form.Item label='Tên sản phẩm' name='name' rules={[{ required: true, message: 'Vui lòng nhập tên sản phẩm!' }]}>
-				<Input placeholder='Nhập tên sản phẩm' />
+				<Input
+					placeholder='Nhập tên sản phẩm'
+					onChange={(e) => {
+						setThongTinNguoiDungNhap({ ...thongTinNguoiDungNhap, name: e.target.value });
+					}}
+				/>
 			</Form.Item>
 
 			<Form.Item
@@ -26,7 +42,13 @@ const FormSanPham: React.FC = () => {
 					},
 				]}
 			>
-				<InputNumber style={{ width: '100%' }} placeholder='Nhập giá sản phẩm' />
+				<InputNumber
+					style={{ width: '100%' }}
+					placeholder='Nhập giá sản phẩm'
+					onChange={(value: any) => {
+						setThongTinNguoiDungNhap({ ...thongTinNguoiDungNhap, price: value });
+					}}
+				/>
 			</Form.Item>
 
 			<Form.Item
@@ -45,11 +67,17 @@ const FormSanPham: React.FC = () => {
 					},
 				]}
 			>
-				<InputNumber style={{ width: '100%' }} placeholder='Nhập số lượng sản phẩm' />
+				<InputNumber
+					style={{ width: '100%' }}
+					placeholder='Nhập số lượng sản phẩm'
+					onChange={(value: any) => {
+						setThongTinNguoiDungNhap({ ...thongTinNguoiDungNhap, quantity: value });
+					}}
+				/>
 			</Form.Item>
 
 			<Form.Item>
-				<Button type='primary' htmlType='submit'>
+				<Button type='primary' htmlType='submit' onClick={submit}>
 					Thêm sản phẩm
 				</Button>
 			</Form.Item>
