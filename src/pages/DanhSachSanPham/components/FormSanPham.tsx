@@ -8,6 +8,7 @@ const FormSanPham = (props: { danhSachSanPham: sanPham[]; setDanhSachSanPham: an
 	const [thongTinNguoiDungNhap, setThongTinNguoiDungNhap] = useState<sanPham>({
 		id: 0,
 		name: '',
+		category: '',
 		price: 0,
 		quantity: 0,
 	});
@@ -26,6 +27,19 @@ const FormSanPham = (props: { danhSachSanPham: sanPham[]; setDanhSachSanPham: an
 					placeholder='Nhập tên sản phẩm'
 					onChange={(e) => {
 						setThongTinNguoiDungNhap({ ...thongTinNguoiDungNhap, name: e.target.value });
+					}}
+				/>
+			</Form.Item>
+
+			<Form.Item
+				label='Loại sản phẩm'
+				name='category'
+				rules={[{ required: true, message: 'Vui lòng nhập loại sản phẩm!' }]}
+			>
+				<Input
+					placeholder='Nhập loại sản phẩm'
+					onChange={(e) => {
+						setThongTinNguoiDungNhap({ ...thongTinNguoiDungNhap, category: e.target.value });
 					}}
 				/>
 			</Form.Item>
