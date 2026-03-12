@@ -42,6 +42,13 @@
 		icon: 'OrderedListOutlined',
 		component: './TodoList',
 	},
+	
+	{
+		path: '/ThucHanh02',
+		name: 'Bài thực hành 02',
+		component: './TH02',
+	},
+
 
 	// DANH MUC HE THONG
 	// {
