@@ -42,6 +42,11 @@
 		icon: 'OrderedListOutlined',
 		component: './TodoList',
 	},
+	{
+		path: '/QuanLySoVanBang',
+		name: 'Quản lý sổ văn bằng',
+		component: './QuanLySoVanBang',
+	},
 
 	// DANH MUC HE THONG
 	// {
