@@ -42,6 +42,11 @@
 		icon: 'OrderedListOutlined',
 		component: './TodoList',
 	},
+	{
+		path: '/kiemtragiuaky',
+		name: 'Quản lý phòng học',
+		component: './KTGK',
+	},
 
 	// DANH MUC HE THONG
 	// {
